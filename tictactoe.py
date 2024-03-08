@@ -153,9 +153,8 @@ class Tic_Tac_Toe:
             iswrongmove=True
 
         return iswrongmove
-def PlayTicTacToe():
+def TicTacToe():
     obj=Tic_Tac_Toe()
-
     turn = 'X'
     x_player = obj.x_player
     y_player = obj.y_player
@@ -174,13 +173,7 @@ def PlayTicTacToe():
                 obj.print_board(move,turn)
                 result = obj.WinCheck()
                 if result==True:
-                    m=input('Another match? y/n: ').lower()
-                    if m == 'y':
-                        os.system('cls')
-                        PlayTicTacToe()
-                    else:
-                        input('press enter to go to the main menu')
-                        loop = False
+                    return
                 turn = 'Y'
                 obj.total_turns+=1
                 obj.player = y_player
@@ -195,23 +188,27 @@ def PlayTicTacToe():
                 obj.print_board(move,turn)
                 result = obj.WinCheck()
                 if result==True:
-                    m=input('Another match? y/n: ').lower()
-                    if m == 'y':
-                        os.system('cls')
-                        PlayTicTacToe()
-                    elif m=='n':
-                        input('press enter to the main menu')
-                        loop = False
+                    return
+                        # loop = False
+                        # break
                 turn = 'X'
                 obj.total_turns+=1
                 obj.player = x_player
     except Exception as e:
             print(f"Error: {e}")
-            restart = input("restart the program ? y/n")
-            if restart.lower() == 'y':
-                PlayTicTacToe()
-            else:
-                loop = False
+
+def PlayTicTacToe():
+    x='y'
+    loop=True
+    while loop:
+        if x=='y':
+
+            TicTacToe()
+            x=input('Play again? y/n :')
+            os.system('cls')
+        else:
+            input('press enter to go to the main menu')
+            loop=False
 
 if __name__ == "__main__":
     PlayTicTacToe()
