@@ -9,6 +9,7 @@ prompt = r'''1.Type 1 to play Wordle
 
 loop = True
 while loop:
+    print()
     abc = input(prompt)
     os.system('cls')
     if abc == '3':
